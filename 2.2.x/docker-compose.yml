@@ -1,0 +1,18 @@
+version: "3"
+services:
+  nats-server:
+    image: nats:2.2
+    ports:
+    - "4222:4222"
+    - "6222:6222"
+    - "8222:8222"
+    - "1883:1883"
+    - "8080:80"
+    volumes:
+    - "./nats-server.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"
+  nats-box:
+    image: natsio/nats-box:0.6.0
+    tty: true
