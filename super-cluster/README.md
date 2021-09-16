@@ -117,7 +117,7 @@ https://docs.nats.io/nats-server/configuration/gateways
 * U: すべてのゲートウェイの、すべてのゲートウェイノードの総数
   * ゲートウェイ設定における各ノードの総数
 
-#### コネクション数
+#### gateway間コネクション数
 
 * クラスター接続: N*(N-1)/2
 * ゲートウェイ構成:
@@ -131,3 +131,10 @@ https://docs.nats.io/nats-server/configuration/gateways
 * ゲートウェイ接続の数=アウトバウンドの数+インバウンドの数、**ではない**。
 * ゲートウェイ接続の数=アウトバウンドの数=インバウンドの数
 * アウトバウンド接続は、他方から見ればインバウンド接続なのだから
+* cluster-1とcluster-2のgateway間コネクション数は8
+  * cluster-1視点
+    * cluster-1からcluster-2へのアウトバウンドは5
+    * cluster-2からcluster-1へインバウンドは3
+  * cluster-2視点
+    * cluster-2からcluster-1へのアウトバウンドは3
+    * cluster-1からcluster-2へインバウンドは5
