@@ -1,0 +1,194 @@
+version: "3"
+services:
+  # Cluster-1 (正常に動く設定のクラスター)
+  cluster-1-nats-server-1:
+    image: $NATS_VERSION
+    hostname: cluster-1-nats-server-1
+    ports:
+    - "41101:4222"
+    - "41102:6222"
+    - "41103:8222"
+    - "41104:1883"
+    - "41105:80"
+    volumes:
+    - "./conf/cluster-1/cluster-1-nats-server-1.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"
+  cluster-1-nats-server-2:
+    image: $NATS_VERSION
+    hostname: cluster-1-nats-server-2
+    ports:
+    - "41201:4222"
+    - "41202:6222"
+    - "41203:8222"
+    - "41204:1883"
+    - "41205:80"
+    volumes:
+    - "./conf/cluster-1/cluster-1-nats-server-2.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"
+  cluster-1-nats-server-3:
+    image: $NATS_VERSION
+    hostname: cluster-1-nats-server-3
+    ports:
+    - "41301:4222"
+    - "41302:6222"
+    - "41303:8222"
+    - "41304:1883"
+    - "41305:80"
+    volumes:
+    - "./conf/cluster-1/cluster-1-nats-server-3.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"
+  cluster-1-nats-server-4:
+    image: $NATS_VERSION
+    hostname: cluster-1-nats-server-4
+    ports:
+    - "41401:4222"
+    - "41402:6222"
+    - "41403:8222"
+    - "41404:1883"
+    - "41405:80"
+    volumes:
+    - "./conf/cluster-1/cluster-1-nats-server-4.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"
+  cluster-1-nats-server-5:
+    image: $NATS_VERSION
+    hostname: cluster-1-nats-server-5
+    ports:
+    - "41501:4222"
+    - "41502:6222"
+    - "41503:8222"
+    - "41504:1883"
+    - "41505:80"
+    volumes:
+    - "./conf/cluster-1/cluster-1-nats-server-5.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"
+
+
+  # Cluster-2 (正常に動く設定のクラスター)
+  cluster-2-nats-server-1:
+    image: $NATS_VERSION
+    hostname: cluster-2-nats-server-1
+    ports:
+    - "42101:4222"
+    - "42102:6222"
+    - "42103:8222"
+    - "42104:1883"
+    - "42105:80"
+    volumes:
+    - "./conf/cluster-2/cluster-2-nats-server-1.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"
+  cluster-2-nats-server-2:
+    image: $NATS_VERSION
+    hostname: cluster-2-nats-server-2
+    ports:
+    - "42201:4222"
+    - "42202:6222"
+    - "42203:8222"
+    - "42204:1883"
+    - "42205:80"
+    volumes:
+    - "./conf/cluster-2/cluster-2-nats-server-2.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"
+  cluster-2-nats-server-3:
+    image: $NATS_VERSION
+    hostname: cluster-2-nats-server-3
+    ports:
+    - "42301:4222"
+    - "42302:6222"
+    - "42303:8222"
+    - "42304:1883"
+    - "42305:80"
+    volumes:
+    - "./conf/cluster-2/cluster-2-nats-server-3.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"
+  cluster-2-nats-server-4:
+    image: $NATS_VERSION
+    hostname: cluster-2-nats-server-4
+    ports:
+    - "42401:4222"
+    - "42402:6222"
+    - "42403:8222"
+    - "42404:1883"
+    - "42405:80"
+    volumes:
+    - "./conf/cluster-2/cluster-2-nats-server-4.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"
+  cluster-2-nats-server-5:
+    image: $NATS_VERSION
+    hostname: cluster-2-nats-server-5
+    ports:
+    - "42501:4222"
+    - "42502:6222"
+    - "42503:8222"
+    - "42504:1883"
+    - "42505:80"
+    volumes:
+    - "./conf/cluster-2/cluster-2-nats-server-5.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"
+
+  # Cluster-3 (動きはするが設定調査用のクラスタ。複数のgatewayを設定してみる。)
+  cluster-3-nats-server-1:
+    image: $NATS_VERSION
+    hostname: cluster-3-nats-server-1
+    ports:
+    - "43101:4222"
+    - "43102:6222"
+    - "43103:8222"
+    - "43104:1883"
+    - "43105:80"
+    volumes:
+    - "./conf/cluster-3/cluster-3-nats-server-1.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"
+
+  # Cluster-4 (動きはするが設定調査用のクラスタ。gateway.gatewaysに自分に対するルート情報を入れないとどうなるか)
+  cluster-4-nats-server-1:
+    image: $NATS_VERSION
+    hostname: cluster-4-nats-server-1
+    ports:
+    - "44101:4222"
+    - "44102:6222"
+    - "44103:8222"
+    - "44104:1883"
+    - "44105:80"
+    volumes:
+    - "./conf/cluster-4/cluster-4-nats-server-1.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"
+
+  # Non-Clustering (正常に動く設定のクラスター。クラスタ設定無しでgateway設定だけした場合。)
+  non-clustering-nats-server-1:
+    image: $NATS_VERSION
+    hostname: non-clustering-nats-server-1
+    ports:
+    - "60101:4222"
+    - "60102:6222"
+    - "60103:8222"
+    - "60104:1883"
+    - "60105:80"
+    volumes:
+    - "./conf/non-clustering/non-clustering-nats-server-1.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"

@@ -1,0 +1,44 @@
+version: "3"
+services:
+  nats-server-1:
+    image: $NATS_VERSION
+    hostname: nats-server-1
+    ports:
+    - "14222:4222"
+    - "16222:6222"
+    - "18222:8222"
+    - "11883:1883"
+    - "18080:80"
+    volumes:
+    - "./nats-server-1.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"
+  nats-server-2:
+    image: $NATS_VERSION
+    hostname: nats-server-2
+    ports:
+    - "24222:4222"
+    - "26222:6222"
+    - "28222:8222"
+    - "21883:1883"
+    - "28080:80"
+    volumes:
+    - "./nats-server-2.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"
+  nats-server-3:
+    image: $NATS_VERSION
+    hostname: nats-server-3
+    ports:
+    - "34222:4222"
+    - "36222:6222"
+    - "38222:8222"
+    - "31883:1883"
+    - "38080:80"
+    volumes:
+    - "./nats-server-3.conf:/nats-server.conf"
+    command:
+    - "--config"
+    - "/nats-server.conf"
